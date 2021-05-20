@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Search = (props) => {
+ const Search = (props) => {
     return (
         <form>
             <div className='search-container'>
@@ -16,3 +16,5 @@ export const Search = (props) => {
         </form>
     )
 }
+
+export default Search;

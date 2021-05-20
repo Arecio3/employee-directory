@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import API from './utils/API'
-import Table from './components/Table'
-import { Search } from './components/Search';
+import Main from './components/Main';
 
 class App extends Component {
 
@@ -23,8 +22,7 @@ class App extends Component {
     return (
       <Wrapper>
       <Header />
-      <Search />
-      <Table employees={this.state.employees}/>
+      <Main />
       </Wrapper>
      );
   }

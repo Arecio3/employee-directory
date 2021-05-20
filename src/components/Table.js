@@ -1,26 +1,26 @@
-import React from 'react'
+import React from 'react';
+import './style.css';
 
-
-const Table = (props) => {
-    console.log(props.employees);
-
+const Table = ({  allEmployees, searchValue, handleSort }) => {
+ 
 
     return (
-        <table className="table" >
+        <div className='table-container'>
+        <table id="table">
             <thead>
                 <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">DOB</th>
+                    <th>Image</th>
+                    <th><span id='filterBtn' onClick={handleSort}>Name</span></th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>DOB</th>
                 </tr>
             </thead>
             <tbody>
-            {props.employees.map(employee => {
+            {allEmployees.map((employee) => {
                 const formatYmd = new Date(employee.dob.date)
 
-                return(
+                return employee.name.first.includes(searchValue) ? (
                 <tr>
                 <th><img src={employee.picture.thumbnail} alt={employee.name}></img></th>
                 <td>{employee.name.first + " " + employee.name.last}</td>
@@ -28,10 +28,11 @@ const Table = (props) => {
                 <td>{employee.email}</td>
                 <td>{formatYmd.getFullYear()+'-' + (formatYmd.getMonth()+1) + '-'+formatYmd.getDate()}</td>
             </tr> 
-                )
+                ) : null;
             })}
             </tbody>
         </table>
+        </div>
     )
 }
 
